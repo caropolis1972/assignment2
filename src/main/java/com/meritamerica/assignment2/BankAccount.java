@@ -1,10 +1,9 @@
 package com.meritamerica.assignment2;
 
-public abstract class BankAccount {
+public class BankAccount {
 	private long accountNumber;
 	private double balance;
 	private double interestRate;
-	
 	
 	public BankAccount(long accountNumber, double balance, double interestRate) {
 		this.accountNumber = accountNumber;
@@ -43,7 +42,6 @@ public abstract class BankAccount {
 			balance += amount;
 			return true;
 		} else return false;
-		
 	}
 	
 	double futureValue(double years) {
@@ -51,7 +49,4 @@ public abstract class BankAccount {
 		futureValue = (balance * Math.pow((1+interestRate), years));
 		return futureValue;
 	}
-	
-	
-
 }
