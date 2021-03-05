@@ -1,21 +1,22 @@
 package com.meritamerica.assignment2;
 
-import java.util.Date;
+import java.time.LocalDate;;
 
 public class CDAccount {
 	long accountNumber;
-	private CDOffering offering;
 	private int term;
 	private double interestRate;
 	private double balance;
-	private Date startDate; 
+	private LocalDate startDate; 
 	
 	public CDAccount(CDOffering offering, double balance) {
-		this.offering = offering;
+		this.term = offering.getTerm();
+		this.interestRate = offering.getInterestRate();
 		this.balance = balance;
+		this.accountNumber = MeritBank.getNextAccountNumber();
+		this.startDate = LocalDate.now();
 	}
 	
-
 	public double getBalance() {
 		return balance;
 	}
@@ -32,13 +33,13 @@ public class CDAccount {
 		return accountNumber;
 	}
 
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
 	double futureValue(double years) {
 		double futureValue = 1.0;
-		futureValue = (balance * Math.pow((1+interestRate), years));
+		futureValue = (balance * Math.pow((1+this.getInterestRate()), this.getTerm()));
 		return futureValue;
 	}
 }

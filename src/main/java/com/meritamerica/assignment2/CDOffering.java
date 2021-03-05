@@ -1,6 +1,6 @@
 package com.meritamerica.assignment2;
 
-public class CDOffering {
+public class CDOffering implements Comparable<CDOffering>{
 	
 	
 	private int term;
@@ -17,6 +17,17 @@ public class CDOffering {
 
 	public double getInterestRate() {
 		return interestRate;
+	}
+
+	@Override
+	public int compareTo(CDOffering o) {
+		if ((Math.pow((1+this.getInterestRate()), this.getTerm())) > (Math.pow((1+o.getInterestRate()), o.getTerm()))) {
+			return 1;
+		} else if ((Math.pow((1+this.getInterestRate()), this.getTerm())) == (Math.pow((1+o.getInterestRate()), o.getTerm()))) {
+			return 0;
+		} else {
+			return -1;
+		}
 	}
 
 }
