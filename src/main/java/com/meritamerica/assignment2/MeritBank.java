@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Random;
 
 public class MeritBank {
-	private static AccountHolder[] accountHolders = new AccountHolder[15];
+	private static AccountHolder[] accountHolders = new AccountHolder[20];
 	private static int ahArrayCounter = 0;
 	private static CDOffering[] cdOfferings = {new CDOffering(1, 0.018), new CDOffering(2, 0.019), new CDOffering(3, 0.02), new CDOffering(4, 0.025), new CDOffering(10, 0.022)};
 	private static double totalBalances;
@@ -15,8 +15,8 @@ public class MeritBank {
 	
 	public static void addAccountHolder(AccountHolder accountHolder) {
 		accountHolders[ahArrayCounter] = accountHolder;
-		ahArrayCounter += 1;
-		MeritBank.totalBalances(accountHolders);
+		ahArrayCounter++;
+		//MeritBank.totalBalances(accountHolders);
 	}
 	
 	public static AccountHolder[] getAccountHolders() {

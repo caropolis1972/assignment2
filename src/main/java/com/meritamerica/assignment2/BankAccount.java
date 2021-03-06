@@ -1,9 +1,23 @@
 package com.meritamerica.assignment2;
 
-public class BankAccount {
+public abstract class BankAccount {
 	private long accountNumber;
 	private double balance;
 	private double interestRate;
+	
+	public BankAccount() {
+		
+	}
+	
+	public BankAccount(double startingBalance) {
+		this.balance = startingBalance;
+	}
+	
+	public BankAccount(double balance, double interestRate) {
+		this.balance = balance;
+		this.interestRate = interestRate;
+		MeritBank.getNextAccountNumber();
+	}
 	
 	public BankAccount(long accountNumber, double balance, double interestRate) {
 		this.accountNumber = accountNumber;
@@ -11,16 +25,11 @@ public class BankAccount {
 		this.interestRate = interestRate;
 	}
 	
-	public BankAccount( double balance, double interestRate) {
-		this.balance = balance;
-		this.interestRate = interestRate;
-	}
-	
-	public double getAccountNumber() {
+	public long getAccountNumber() {
 		return accountNumber;
 	}
 
-	public  double getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 
@@ -45,8 +54,7 @@ public class BankAccount {
 	}
 	
 	double futureValue(double years) {
-		double futureValue = 1.0;
-		futureValue = (balance * Math.pow((1+interestRate), years));
+		double futureValue = (balance * Math.pow((1+interestRate), years));
 		return futureValue;
 	}
 }
